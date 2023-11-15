@@ -13,14 +13,14 @@ public class Loan {
     }
     public static void main(String[] args) {
         Loan carLoan = new Loan(10000, 3, 5, 2000);
-        Loan.checkLoan(carLoan);
-        Loan.calculateMonthlyPayment(carLoan);
+        carLoan.checkLoan();
+        carLoan.calculateMonthlyPayment();
 
     }
 
-    public static boolean checkLoan(Loan loan){
+    public boolean checkLoan(){
 
-        if ((loan.loanLength <= 0) || (loan.interest <= 0) || (loan.loan <= loan.downPayment)) {
+        if ((this.loanLength <= 0) || (this.interest <= 0) || (this.loan <= this.downPayment)) {
             System.out.println("Error: Loan not possible");
             return false;
         } else {
@@ -29,12 +29,12 @@ public class Loan {
         }
     }
 
-    public static int calculateMonthlyPayment(Loan loan) {
-        int remainingBalance = loan.loan - loan.downPayment;
-        int monthlyPayment = remainingBalance / loan.loanLength;
+    public int calculateMonthlyPayment() {
+        int remainingBalance = this.loan - this.downPayment;
+        int monthlyPayment = remainingBalance / this.loanLength;
         System.out.println("Your remaining balance is " + remainingBalance +
                 ". This means your monthly payment will be " + monthlyPayment +
-                " for the next " + loan.loanLength + " months.");
+                " for the next " + this.loanLength + " months.");
         return monthlyPayment;
     }
 }
